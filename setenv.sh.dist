@@ -1,0 +1,5 @@
+export DHL_API_USER=""
+export DHL_API_KEY=""
+export DHL_API_ACCOUNTID=""
+export DHL_API_ORGANISATIONID=""
+# export DHL_API_BASEURI=""

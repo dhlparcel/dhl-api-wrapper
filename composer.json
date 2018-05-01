@@ -1,0 +1,42 @@
+{
+    "name": "dhl-plugins/dhl-api-wrapper",
+    "description": "Dhl Api Wrapper",
+    "homepage": "https://www.dhlparcel.nl",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rudger Gravestein",
+            "email": "rudger.gravestein@dhl.com",
+            "homepage": "https://github.com/Rud5G"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.6",
+        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle-services": "^1.1"
+    },
+    "require-dev": {
+        "ext-curl": "*",
+        "phpunit/phpunit": "^5",
+        "psr/log": "^1.0",
+        "ramsey/uuid": "^3.7",
+        "roave/security-advisories": "dev-master",
+        "zendframework/zend-config-aggregator": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dhl\\": "src/Dhl"
+        }
+    },
+    "suggest": {
+        "psr/log": "Required for using the Log middleware",
+        "ramsey/uuid": "Required for using UUID generator",
+        "zendframework/zend-config-aggregator": "Required for generating service-description resources"
+    }
+}
