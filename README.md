@@ -20,6 +20,10 @@ After installing, you need to require Composer's autoloader:
 require __DIR__ . '/vendor/autoload.php';
 ```
 
+### Frequently asked questions
+
+See [FAQ.md](FAQ.md).
+
 ## Getting Started
 
 First you will need to initialise the client like this:
