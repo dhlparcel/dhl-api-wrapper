@@ -57,14 +57,10 @@ return array(
                         ),
                     'option' =>
                         array(
-                            'description' => 'The shipment options',
-                            'type' => 'array',
+                            'description' => 'The shipment options (comma separated)',
+                            'type' => 'string',
                             'required' => false,
-                            'location' => 'query',
-                            'items' =>
-                                array(
-                                    'type' => 'string',
-                                ),
+                            'location' => 'query'
                         ),
                     'fromPostalCode' =>
                         array(
