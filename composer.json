@@ -25,7 +25,6 @@
         "ext-curl": "*",
         "phpunit/phpunit": "^5",
         "psr/log": "^1.0",
-        "ramsey/uuid": "^3.7",
         "roave/security-advisories": "dev-master",
         "zendframework/zend-config-aggregator": "^1.1"
     },
