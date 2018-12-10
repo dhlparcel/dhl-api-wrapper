@@ -1,45 +1,30 @@
 <?php
 return array (
-  'createLabel' =>
+  'createShipment' => 
   array (
     'httpMethod' => 'POST',
-    'uri' => '/labels',
+    'uri' => '/shipments',
     'responseModel' => 'getResponse',
-    'parameters' =>
+    'parameters' => 
     array (
-      'body' =>
+      'body' => 
       array (
-        'description' => 'LabelSpecification',
+        'description' => 'ShipmentSpecificationDto',
         'type' => 'object',
         'required' => true,
         'location' => 'body',
-        'properties' =>
+        'properties' => 
         array (
-          'labelId' =>
+          'shipmentId' => 
           array (
-            'name' => 'labelId',
-            'description' => 'Provide UUID for the label',
+            'name' => 'shipmentId',
+            'description' => 'Provide a UUID for the shipment',
             'type' => 'string',
             'required' => true,
             'format' => 'uuid',
-            'example' => '061091e9-f6cf-453e-951d-5a276303d060',
+            'example' => '15916857-2a31-4238-a45b-e7ba32e0e320',
           ),
-          'labelFormat' =>
-          array (
-            'name' => 'labelFormat',
-            'description' => 'The format of the returned label when a json response is requested, pdf, zpl or both. When omitted, the format is pdf',
-            'type' => 'string',
-            'required' => false,
-            'enum' =>
-            array (
-              0 => 'pdf',
-              1 => 'zpl',
-              2 => 'both',
-              3 => 'neither',
-            ),
-            'example' => 'pdf',
-          ),
-          'orderReference' =>
+          'orderReference' => 
           array (
             'name' => 'orderReference',
             'description' => 'Add an order reference by which the label can be retrieved later',
@@ -47,51 +32,43 @@ return array (
             'required' => false,
             'example' => 'myReference',
           ),
-          'parcelTypeKey' =>
-          array (
-            'name' => 'parcelTypeKey',
-            'description' => 'Parcel type key as provided by the parceltype endpoint',
-            'type' => 'string',
-            'required' => true,
-            'example' => 'SMALL',
-          ),
-          'receiver' =>
+          'receiver' => 
           array (
             'name' => 'receiver',
             'description' => 'Receiver details',
             'type' => 'object',
             'required' => true,
-            'properties' =>
+            'properties' => 
             array (
-              'name' =>
+              'name' => 
               array (
                 'name' => 'name',
                 'type' => 'object',
                 'required' => true,
-                'properties' =>
+                'properties' => 
                 array (
-                  'firstName' =>
+                  'firstName' => 
                   array (
                     'name' => 'firstName',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'John',
                   ),
-                  'lastName' =>
+                  'lastName' => 
                   array (
                     'name' => 'lastName',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Doe',
                   ),
-                  'companyName' =>
+                  'companyName' => 
                   array (
                     'name' => 'companyName',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'ACME Corp.',
                   ),
-                  'additionalName' =>
+                  'additionalName' => 
                   array (
                     'name' => 'additionalName',
                     'type' => 'string',
@@ -100,14 +77,14 @@ return array (
                   ),
                 ),
               ),
-              'address' =>
+              'address' => 
               array (
                 'name' => 'address',
                 'type' => 'object',
                 'required' => true,
-                'properties' =>
+                'properties' => 
                 array (
-                  'countryCode' =>
+                  'countryCode' => 
                   array (
                     'name' => 'countryCode',
                     'description' => 'ISO 3166-1 alpha-2 country code',
@@ -115,42 +92,42 @@ return array (
                     'required' => false,
                     'example' => 'NL',
                   ),
-                  'postalCode' =>
+                  'postalCode' => 
                   array (
                     'name' => 'postalCode',
                     'type' => 'string',
                     'required' => false,
                     'example' => '3542AD',
                   ),
-                  'city' =>
+                  'city' => 
                   array (
                     'name' => 'city',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Utrecht',
                   ),
-                  'street' =>
+                  'street' => 
                   array (
                     'name' => 'street',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Reactorweg',
                   ),
-                  'additionalAddressLine' =>
+                  'additionalAddressLine' => 
                   array (
                     'name' => 'additionalAddressLine',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Street part 2',
                   ),
-                  'number' =>
+                  'number' => 
                   array (
                     'name' => 'number',
                     'type' => 'string',
                     'required' => false,
                     'example' => '25',
                   ),
-                  'isBusiness' =>
+                  'isBusiness' => 
                   array (
                     'name' => 'isBusiness',
                     'description' => '\'true\' for a business address. \'false\' for a consumer address',
@@ -158,7 +135,7 @@ return array (
                     'required' => false,
                     'example' => '1',
                   ),
-                  'addition' =>
+                  'addition' => 
                   array (
                     'name' => 'addition',
                     'type' => 'string',
@@ -167,14 +144,14 @@ return array (
                   ),
                 ),
               ),
-              'email' =>
+              'email' => 
               array (
                 'name' => 'email',
                 'type' => 'string',
                 'required' => false,
                 'example' => 'mrparcel@dhlparcel.nl',
               ),
-              'phoneNumber' =>
+              'phoneNumber' => 
               array (
                 'name' => 'phoneNumber',
                 'type' => 'string',
@@ -183,43 +160,43 @@ return array (
               ),
             ),
           ),
-          'shipper' =>
+          'shipper' => 
           array (
             'name' => 'shipper',
             'description' => 'Shipper details',
             'type' => 'object',
             'required' => true,
-            'properties' =>
+            'properties' => 
             array (
-              'name' =>
+              'name' => 
               array (
                 'name' => 'name',
                 'type' => 'object',
                 'required' => true,
-                'properties' =>
+                'properties' => 
                 array (
-                  'firstName' =>
+                  'firstName' => 
                   array (
                     'name' => 'firstName',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'John',
                   ),
-                  'lastName' =>
+                  'lastName' => 
                   array (
                     'name' => 'lastName',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Doe',
                   ),
-                  'companyName' =>
+                  'companyName' => 
                   array (
                     'name' => 'companyName',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'ACME Corp.',
                   ),
-                  'additionalName' =>
+                  'additionalName' => 
                   array (
                     'name' => 'additionalName',
                     'type' => 'string',
@@ -228,14 +205,14 @@ return array (
                   ),
                 ),
               ),
-              'address' =>
+              'address' => 
               array (
                 'name' => 'address',
                 'type' => 'object',
                 'required' => true,
-                'properties' =>
+                'properties' => 
                 array (
-                  'countryCode' =>
+                  'countryCode' => 
                   array (
                     'name' => 'countryCode',
                     'description' => 'ISO 3166-1 alpha-2 country code',
@@ -243,42 +220,42 @@ return array (
                     'required' => false,
                     'example' => 'NL',
                   ),
-                  'postalCode' =>
+                  'postalCode' => 
                   array (
                     'name' => 'postalCode',
                     'type' => 'string',
                     'required' => false,
                     'example' => '3542AD',
                   ),
-                  'city' =>
+                  'city' => 
                   array (
                     'name' => 'city',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Utrecht',
                   ),
-                  'street' =>
+                  'street' => 
                   array (
                     'name' => 'street',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Reactorweg',
                   ),
-                  'additionalAddressLine' =>
+                  'additionalAddressLine' => 
                   array (
                     'name' => 'additionalAddressLine',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Street part 2',
                   ),
-                  'number' =>
+                  'number' => 
                   array (
                     'name' => 'number',
                     'type' => 'string',
                     'required' => false,
                     'example' => '25',
                   ),
-                  'isBusiness' =>
+                  'isBusiness' => 
                   array (
                     'name' => 'isBusiness',
                     'description' => '\'true\' for a business address. \'false\' for a consumer address',
@@ -286,7 +263,7 @@ return array (
                     'required' => false,
                     'example' => '1',
                   ),
-                  'addition' =>
+                  'addition' => 
                   array (
                     'name' => 'addition',
                     'type' => 'string',
@@ -295,28 +272,28 @@ return array (
                   ),
                 ),
               ),
-              'email' =>
+              'email' => 
               array (
                 'name' => 'email',
                 'type' => 'string',
                 'required' => false,
                 'example' => 'mrparcel@dhlparcel.nl',
               ),
-              'phoneNumber' =>
+              'phoneNumber' => 
               array (
                 'name' => 'phoneNumber',
                 'type' => 'string',
                 'required' => false,
                 'example' => '0031612345678',
               ),
-              'vatNumber' =>
+              'vatNumber' => 
               array (
                 'name' => 'vatNumber',
                 'type' => 'string',
                 'required' => false,
                 'example' => 'NL007096100B01',
               ),
-              'eori' =>
+              'eori' => 
               array (
                 'name' => 'eori',
                 'type' => 'string',
@@ -325,7 +302,7 @@ return array (
               ),
             ),
           ),
-          'accountId' =>
+          'accountId' => 
           array (
             'name' => 'accountId',
             'description' => 'Account id as provided by DHL. May only be empty for C2C customers.',
@@ -333,24 +310,24 @@ return array (
             'required' => true,
             'example' => '01234567',
           ),
-          'options' =>
+          'options' => 
           array (
             'name' => 'options',
-            'description' => 'Shipment options for this piece.',
+            'description' => 'Shipment options for all pieces.',
             'type' => 'array',
             'required' => false,
-            'items' =>
+            'items' => 
             array (
               'type' => 'object',
-              'properties' =>
+              'properties' => 
               array (
-                'key' =>
+                'key' => 
                 array (
                   'type' => 'string',
                   'example' => 'DOOR',
                   'description' => 'The shipment option key as provided by the capabilities endpoint',
                 ),
-                'input' =>
+                'input' => 
                 array (
                   'type' => 'string',
                   'description' => 'Optional input for the shipment option',
@@ -358,43 +335,43 @@ return array (
               ),
             ),
           ),
-          'onBehalfOf' =>
+          'onBehalfOf' => 
           array (
             'name' => 'onBehalfOf',
             'description' => 'Shipper details when sending on behalf of someone',
             'type' => 'object',
             'required' => false,
-            'properties' =>
+            'properties' => 
             array (
-              'name' =>
+              'name' => 
               array (
                 'name' => 'name',
                 'type' => 'object',
                 'required' => true,
-                'properties' =>
+                'properties' => 
                 array (
-                  'firstName' =>
+                  'firstName' => 
                   array (
                     'name' => 'firstName',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'John',
                   ),
-                  'lastName' =>
+                  'lastName' => 
                   array (
                     'name' => 'lastName',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Doe',
                   ),
-                  'companyName' =>
+                  'companyName' => 
                   array (
                     'name' => 'companyName',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'ACME Corp.',
                   ),
-                  'additionalName' =>
+                  'additionalName' => 
                   array (
                     'name' => 'additionalName',
                     'type' => 'string',
@@ -403,14 +380,14 @@ return array (
                   ),
                 ),
               ),
-              'address' =>
+              'address' => 
               array (
                 'name' => 'address',
                 'type' => 'object',
                 'required' => true,
-                'properties' =>
+                'properties' => 
                 array (
-                  'countryCode' =>
+                  'countryCode' => 
                   array (
                     'name' => 'countryCode',
                     'description' => 'ISO 3166-1 alpha-2 country code',
@@ -418,42 +395,42 @@ return array (
                     'required' => false,
                     'example' => 'NL',
                   ),
-                  'postalCode' =>
+                  'postalCode' => 
                   array (
                     'name' => 'postalCode',
                     'type' => 'string',
                     'required' => false,
                     'example' => '3542AD',
                   ),
-                  'city' =>
+                  'city' => 
                   array (
                     'name' => 'city',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Utrecht',
                   ),
-                  'street' =>
+                  'street' => 
                   array (
                     'name' => 'street',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Reactorweg',
                   ),
-                  'additionalAddressLine' =>
+                  'additionalAddressLine' => 
                   array (
                     'name' => 'additionalAddressLine',
                     'type' => 'string',
                     'required' => false,
                     'example' => 'Street part 2',
                   ),
-                  'number' =>
+                  'number' => 
                   array (
                     'name' => 'number',
                     'type' => 'string',
                     'required' => false,
                     'example' => '25',
                   ),
-                  'isBusiness' =>
+                  'isBusiness' => 
                   array (
                     'name' => 'isBusiness',
                     'description' => '\'true\' for a business address. \'false\' for a consumer address',
@@ -461,7 +438,7 @@ return array (
                     'required' => false,
                     'example' => '1',
                   ),
-                  'addition' =>
+                  'addition' => 
                   array (
                     'name' => 'addition',
                     'type' => 'string',
@@ -470,28 +447,28 @@ return array (
                   ),
                 ),
               ),
-              'email' =>
+              'email' => 
               array (
                 'name' => 'email',
                 'type' => 'string',
                 'required' => false,
                 'example' => 'mrparcel@dhlparcel.nl',
               ),
-              'phoneNumber' =>
+              'phoneNumber' => 
               array (
                 'name' => 'phoneNumber',
                 'type' => 'string',
                 'required' => false,
                 'example' => '0031612345678',
               ),
-              'vatNumber' =>
+              'vatNumber' => 
               array (
                 'name' => 'vatNumber',
                 'type' => 'string',
                 'required' => false,
                 'example' => 'NL007096100B01',
               ),
-              'eori' =>
+              'eori' => 
               array (
                 'name' => 'eori',
                 'type' => 'string',
@@ -500,7 +477,7 @@ return array (
               ),
             ),
           ),
-          'returnLabel' =>
+          'returnLabel' => 
           array (
             'name' => 'returnLabel',
             'description' => 'Indicate whether the label should be a return label or not.',
@@ -508,44 +485,75 @@ return array (
             'required' => false,
             'example' => '',
           ),
-          'pieceNumber' =>
+          'pieces' => 
           array (
-            'name' => 'pieceNumber',
-            'description' => 'Used to generate the piece counter e.g. 1/1',
-            'type' => 'integer',
-            'required' => false,
-            'format' => 'int32',
-            'example' => '1',
-          ),
-          'quantity' =>
-          array (
-            'name' => 'quantity',
-            'description' => 'Used to generate the piece counter e.g. 1/1',
-            'type' => 'integer',
-            'required' => false,
-            'format' => 'int32',
-            'example' => '1',
-          ),
-          'automaticPrintDialog' =>
-          array (
-            'name' => 'automaticPrintDialog',
-            'description' => 'Add an instruction to the PDF label so that it on opening it will automatically show the print dialog on PDF readers that implement this feature',
-            'type' => 'boolean',
-            'required' => false,
-          ),
-          'weight' =>
-          array (
-            'name' => 'weight',
-            'description' => 'Actual weight of the parcel in kilograms. Maximum weight depends on the parcel type.',
-            'type' => 'number',
-            'required' => false,
-            'minimum' => 0,
-            'maximum' => 1000,
-            'example' => '1',
+            'name' => 'pieces',
+            'type' => 'array',
+            'required' => true,
+            'items' => 
+            array (
+              'type' => 'object',
+              'required' => 
+              array (
+                0 => 'parcelType',
+                1 => 'quantity',
+              ),
+              'properties' => 
+              array (
+                'parcelType' => 
+                array (
+                  'type' => 'string',
+                  'example' => 'SMALL',
+                  'description' => 'Parcel type key as provided by the parceltype endpoint',
+                ),
+                'quantity' => 
+                array (
+                  'type' => 'integer',
+                  'format' => 'int32',
+                  'example' => 1,
+                  'description' => 'Number of parcels of this parcel type',
+                ),
+                'weight' => 
+                array (
+                  'type' => 'number',
+                  'example' => 1,
+                  'description' => 'Actual weight of the parcel in kilograms. Maximum weight depends on the parcel type.',
+                  'minimum' => 0,
+                  'maximum' => 1000,
+                  'exclusiveMinimum' => true,
+                ),
+                'dimensions' => 
+                array (
+                  'description' => 'Actual dimensions of the parcel, in centimeters. Maximum size depends on the parcel type.',
+                  'type' => 'object',
+                  'properties' => 
+                  array (
+                    'length' => 
+                    array (
+                      'type' => 'number',
+                      'example' => 20,
+                      'description' => 'Length of the piece in centimeters',
+                    ),
+                    'width' => 
+                    array (
+                      'type' => 'number',
+                      'example' => 25,
+                      'description' => 'Width of the piece in centimeters',
+                    ),
+                    'height' => 
+                    array (
+                      'type' => 'number',
+                      'example' => 30,
+                      'description' => 'Height of the piece in centimeters',
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ),
         ),
       ),
     ),
-    'summary' => 'Create a label',
+    'summary' => 'Create labels for all pieces in the shipment',
   ),
 );

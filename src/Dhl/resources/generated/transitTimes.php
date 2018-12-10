@@ -1,18 +1,18 @@
 <?php
 return array (
-  'parcelTypesV2a' =>
+  'transitTimes' => 
   array (
     'httpMethod' => 'GET',
-    'uri' => '/parcel-types/{senderType}/{fromCountry}',
+    'uri' => '/transit-times/{senderType}',
     'responseModel' => 'getResponse',
-    'parameters' =>
+    'parameters' => 
     array (
-      'senderType' =>
+      'senderType' => 
       array (
         'description' => 'The type of sender',
         'type' => 'string',
         'required' => true,
-        'enum' =>
+        'enum' => 
         array (
           0 => 'business',
           1 => 'consumer',
@@ -20,67 +20,76 @@ return array (
         ),
         'location' => 'uri',
       ),
-      'fromCountry' =>
+      'fromCountry' => 
       array (
         'description' => 'The code for the origin country',
         'type' => 'string',
-        'required' => true,
-        'location' => 'uri',
+        'required' => false,
+        'location' => 'query',
       ),
-      'toCountry' =>
+      'toCountry' => 
       array (
         'description' => 'The code for the destination country',
         'type' => 'string',
         'required' => false,
         'location' => 'query',
       ),
-      'fromPostalCode' =>
+      'toBusiness' => 
       array (
-        'description' => 'The postal code for the sender country',
-        'type' => 'string',
-        'required' => false,
-        'location' => 'query',
-      ),
-      'toPostalCode' =>
-      array (
-        'description' => 'The postal code for the destination country',
-        'type' => 'string',
-        'required' => false,
-        'location' => 'query',
-      ),
-      'toBusiness' =>
-      array (
-        'description' => 'Indicates whether or not the destination is a business',
+        'description' => 'Indicates whether or not the receiver is a business',
         'type' => 'boolean',
         'required' => false,
         'location' => 'query',
       ),
-      'carrier' =>
+      'product' => 
       array (
-        'description' => 'The carrier',
+        'description' => 'The product for the transittimes',
         'type' => 'string',
         'required' => false,
-        'enum' =>
+        'location' => 'query',
+      ),
+      'parcelType' => 
+      array (
+        'description' => 'The parcel type',
+        'type' => 'string',
+        'required' => false,
+        'location' => 'query',
+      ),
+      'toPostalCode' => 
+      array (
+        'description' => 'The postal code of the receiver',
+        'type' => 'string',
+        'required' => false,
+        'location' => 'query',
+      ),
+      'toCity' => 
+      array (
+        'description' => 'The city of the receiver',
+        'type' => 'string',
+        'required' => false,
+        'location' => 'query',
+      ),
+      'carrier' => 
+      array (
+        'description' => 'The carrier of the shipment',
+        'type' => 'string',
+        'required' => false,
+        'enum' => 
         array (
           0 => 'DHL-PARCEL',
           1 => 'DHL-EXPRESS',
         ),
+        'default' => 'DHL-PARCEL',
         'location' => 'query',
       ),
-      'accountNumber' =>
+      'shipmentDate' => 
       array (
-        'description' => 'Optional account number to filter result against the blacklist. Intersects with accounts from authorization token.',
-        'type' => 'array',
+        'description' => 'Date when the shipment is sent',
+        'type' => 'string',
         'required' => false,
         'location' => 'query',
-        'items' =>
-        array (
-          'type' => 'string',
-          'example' => '12345678',
-          'default' => '',
-        ),
       ),
     ),
-    'summary' => 'Retrieve the parcel types v2a',
+    'summary' => 'Find the transit time for a country to a certain destination',
   ),
 );

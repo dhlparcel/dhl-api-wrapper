@@ -19,7 +19,7 @@ return array (
           array (
             'name' => 'refreshToken',
             'type' => 'string',
-            'required' => false,
+            'required' => true,
           ),
         ),
       ),
