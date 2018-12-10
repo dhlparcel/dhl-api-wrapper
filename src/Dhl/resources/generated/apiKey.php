@@ -19,14 +19,14 @@ return array (
           array (
             'name' => 'userId',
             'type' => 'string',
-            'required' => false,
+            'required' => true,
             'format' => 'uuid',
           ),
           'key' => 
           array (
             'name' => 'key',
             'type' => 'string',
-            'required' => false,
+            'required' => true,
           ),
         ),
       ),

@@ -1,18 +1,18 @@
 <?php
 return array (
-  'capabilities' => 
+  'capabilities' =>
   array (
     'httpMethod' => 'GET',
     'uri' => '/capabilities/{senderType}',
     'responseModel' => 'getResponse',
-    'parameters' => 
+    'parameters' =>
     array (
-      'senderType' => 
+      'senderType' =>
       array (
         'description' => 'The type of sender',
         'type' => 'string',
         'required' => true,
-        'enum' => 
+        'enum' =>
         array (
           0 => 'business',
           1 => 'consumer',
@@ -20,74 +20,81 @@ return array (
         ),
         'location' => 'uri',
       ),
-      'fromCountry' => 
+      'fromCountry' =>
       array (
         'description' => 'The code for the origin country, required when parcelType is given',
         'type' => 'string',
         'required' => false,
         'location' => 'query',
       ),
-      'toCountry' => 
+      'toCountry' =>
       array (
         'description' => 'The code for the destination country, required when parcelType is given',
         'type' => 'string',
         'required' => false,
         'location' => 'query',
       ),
-      'toBusiness' => 
+      'toBusiness' =>
       array (
         'description' => 'Indicates whether or not the receiver is a business',
         'type' => 'boolean',
         'required' => false,
         'location' => 'query',
       ),
-      'returnProduct' => 
+      'returnProduct' =>
       array (
         'description' => 'Indicates whether or not the shipment is a return shipment',
         'type' => 'boolean',
         'required' => false,
         'location' => 'query',
       ),
-      'parcelType' => 
+      'parcelType' =>
       array (
         'description' => 'The parcel type',
         'type' => 'string',
         'required' => false,
         'location' => 'query',
       ),
-      'option' => 
+      'option' =>
       array (
         'description' => 'The shipment options',
         'type' => 'array',
         'required' => false,
         'location' => 'query',
-        'items' => 
+        'items' =>
         array (
           'type' => 'string',
         ),
       ),
-      'fromPostalCode' => 
+      'fromPostalCode' =>
       array (
         'description' => 'The postal code of the sender',
         'type' => 'string',
         'required' => false,
         'location' => 'query',
       ),
-      'toPostalCode' => 
+      'toPostalCode' =>
       array (
         'description' => 'The postal code of the receiver',
         'type' => 'string',
         'required' => false,
         'location' => 'query',
       ),
-      'accountNumber' => 
+      'toCity' =>
+      array (
+        'description' => 'The city of the receiver (only for express)',
+        'type' => 'string',
+        'required' => false,
+        'location' => 'query',
+      ),
+      'accountNumber' =>
       array (
         'description' => 'The account number',
         'type' => 'string',
         'required' => false,
         'location' => 'query',
       ),
-      'organisationId' => 
+      'organisationId' =>
       array (
         'description' => 'The ID of the organisation',
         'type' => 'string',
@@ -95,12 +102,12 @@ return array (
         'location' => 'query',
         'format' => 'uuid',
       ),
-      'carrier' => 
+      'carrier' =>
       array (
         'description' => 'Related carrier for the capabilities',
         'type' => 'string',
         'required' => false,
-        'enum' => 
+        'enum' =>
         array (
           0 => 'DHL-PARCEL',
           1 => 'DHL-EXPRESS',
@@ -108,9 +115,9 @@ return array (
         'default' => 'DHL-PARCEL',
         'location' => 'query',
       ),
-      'referenceTimeStamp' => 
+      'referenceTimeStamp' =>
       array (
-        'description' => 'Datetime for determining the capabilities (only for express)',
+        'description' => 'Date for determining the capabilities (only for express)',
         'type' => 'string',
         'required' => false,
         'location' => 'query',
