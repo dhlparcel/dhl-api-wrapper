@@ -69,8 +69,8 @@ class AuthMiddleware
      * @var array
      */
     protected $authRequiredConfig = [
-        '/labels' => ['GET', 'POST'],
-//        '/labels/{id}' => ['GET'],
+        '/labels'    => ['GET', 'POST'],
+        '/shipments' => ['GET', 'POST'],
 //        '/pieces/{id}/sources' => ['GET'],
 //        '/v2/addresses/nl/{kixcode}' => ['GET'],
         '/v2/addresses/nl' => ['GET'],
@@ -90,6 +90,10 @@ class AuthMiddleware
 //        '/import-schemas/{schemaId}' => ['GET', 'DELETE'],
         '/import-schemas' => ['GET', 'POST'],
         '/import-schemas/default' => ['GET'],
+    ];
+
+    protected $authRequiredConfigRegexes = [
+        '/^(\/labels\/)?([0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12})/' => ['GET']
     ];
 
     /**
@@ -167,9 +171,18 @@ class AuthMiddleware
     public function isAuthRequired(RequestInterface $request)
     {
         $path = $request->getUri()->getPath();
+        
         if (array_key_exists($path, $this->authRequiredConfig)) {
             if (in_array($request->getMethod(), $this->authRequiredConfig[$path])) {
                 return true;
+            }
+        }
+
+        foreach ($this->authRequiredConfigRegexes as $regex => $methods) {
+            if (preg_match($regex, $path, $matches)) {
+                if (in_array($request->getMethod(), $methods)) {
+                    return true;
+                }
             }
         }
 

@@ -25,6 +25,7 @@ use Psr\Log\LoggerInterface;
  * @method ResultInterface findParcelShopLocationsById(array $args = ['countryCode' => 'NL', 'id' => ''])
  * @method ResultInterface getTrackAndTrace(array $args = ['key' => 'JVGL00000000000000000000,3542 AB'])
  * @method ResultInterface timeWindows(array $args = ['countryCode' => 'NL', 'postalCode' => '5021LC'])
+ * @method ResultInterface getLabel(array $args = ['id' => 'label-id---uuid'])
  *
  *
  * @package Dhl
