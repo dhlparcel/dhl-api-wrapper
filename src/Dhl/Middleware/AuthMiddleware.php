@@ -93,7 +93,7 @@ class AuthMiddleware
     ];
 
     protected $authRequiredConfigRegexes = [
-        '/^(\/labels\/)?([0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12})/' => ['GET']
+        '/^(\/labels\/)([0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12})/' => ['GET']
     ];
 
     /**
