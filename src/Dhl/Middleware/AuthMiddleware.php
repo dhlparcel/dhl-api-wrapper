@@ -107,10 +107,10 @@ class AuthMiddleware
         if ($cacheInterface === null) {
             $cacheInterface = new FileCache(
                 dirname(__FILE__)
-                . DIRECTORY_SEPARATOR . '..'
-                . DIRECTORY_SEPARATOR . '..'
-                . DIRECTORY_SEPARATOR . '..'
-                . DIRECTORY_SEPARATOR . 'tmp');
+                    . DIRECTORY_SEPARATOR . '..'
+                        . DIRECTORY_SEPARATOR . '..'
+                            . DIRECTORY_SEPARATOR . '..'
+                                . DIRECTORY_SEPARATOR . 'tmp');
         }
         $this->cacheInterface = $cacheInterface;
     }
