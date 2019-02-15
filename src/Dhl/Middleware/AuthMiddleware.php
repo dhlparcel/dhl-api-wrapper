@@ -105,7 +105,10 @@ class AuthMiddleware
     {
         $this->httpClient = $httpClient;
         if ($cacheInterface === null) {
-            $cacheInterface = new FileCache('/var/tmp/test-dhl');
+            $cacheInterface = new FileCache(dirname(__FILE__)
+                . DIRECTORY_SEPARATOR . '..'
+                    DIRECTORY_SEPARATOR . '..'
+                        DIRECTORY_SEPARATOR . 'tmp');
         }
         $this->cacheInterface = $cacheInterface;
     }
