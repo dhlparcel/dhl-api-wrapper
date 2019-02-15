@@ -2,8 +2,6 @@
 
 namespace Dhl\Middleware;
 
-use Dhl\Auth\Cache\CacheInterface;
-use Dhl\Auth\Cache\FileCache;
 use Dhl\Auth\Token;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
@@ -61,11 +59,6 @@ class AuthMiddleware
     protected $httpClient;
 
     /**
-     * @var CacheInterface;
-     */
-    protected $cacheInterface;
-
-    /**
      * @var array
      */
     protected $authRequiredConfig = [
@@ -99,20 +92,10 @@ class AuthMiddleware
     /**
      * AuthMiddleware constructor.
      * @param HttpClient $httpClient
-     * @param CacheInterface|null $cacheInterface
      */
-    public function __construct($httpClient, CacheInterface $cacheInterface = null)
+    public function __construct($httpClient)
     {
         $this->httpClient = $httpClient;
-        if ($cacheInterface === null) {
-            $cacheInterface = new FileCache(
-                dirname(__FILE__)
-                    . DIRECTORY_SEPARATOR . '..'
-                        . DIRECTORY_SEPARATOR . '..'
-                            . DIRECTORY_SEPARATOR . '..'
-                                . DIRECTORY_SEPARATOR . 'tmp');
-        }
-        $this->cacheInterface = $cacheInterface;
     }
 
     /**
@@ -150,19 +133,13 @@ class AuthMiddleware
                 return new RejectedPromise(new RequestException($message, $request));
             }
 
-            $accessTokenCache = $this->cacheInterface->fetch('accessToken');
-            $refreshTokenCache = $this->cacheInterface->fetch('refreshToken');
-            if ($accessTokenCache !== false) {
-                $token = new Token($accessTokenCache);
-                if (!$token->isValid()) {
-                    try {
-                        $token = $this->refreshtoken($refreshTokenCache);
-                    } catch (GuzzleException $exception) {
-                        $token = $this->authenticate($user, $key);
-                    }
+            $token = new Token($accessTokenCache);
+            if (!$token->isValid()) {
+                try {
+                    $token = $this->refreshtoken($refreshTokenCache);
+                } catch (GuzzleException $exception) {
+                    $token = $this->authenticate($user, $key);
                 }
-            } else {
-                $token = $this->authenticate($user, $key);
             }
 
             return $handler($request->withHeader('Authorization', sprintf('Bearer %s', $token->getToken())), $options);
@@ -210,9 +187,6 @@ class AuthMiddleware
         ]);
         $jsonBody = \GuzzleHttp\json_decode($response->getBody(), true);
 
-        $this->cacheInterface->save('accessToken', $jsonBody['accessToken']);
-        $this->cacheInterface->save('refreshToken', $jsonBody['refreshToken']);
-
         return new Token($jsonBody['accessToken']);
     }
 
@@ -229,9 +203,6 @@ class AuthMiddleware
             ],
         ]);
         $jsonBody = \GuzzleHttp\json_decode($response->getBody(), true);
-
-        $this->cacheInterface->save('accessToken', $jsonBody['accessToken']);
-        $this->cacheInterface->save('refreshToken', $jsonBody['refreshToken']);
 
         return new Token($jsonBody['accessToken']);
     }
