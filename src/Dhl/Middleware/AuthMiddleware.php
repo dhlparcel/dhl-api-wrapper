@@ -105,7 +105,12 @@ class AuthMiddleware
     {
         $this->httpClient = $httpClient;
         if ($cacheInterface === null) {
-            $cacheInterface = new FileCache('/var/tmp/test-dhl');
+            $cacheInterface = new FileCache(
+                dirname(__FILE__)
+                    . DIRECTORY_SEPARATOR . '..'
+                        . DIRECTORY_SEPARATOR . '..'
+                            . DIRECTORY_SEPARATOR . '..'
+                                . DIRECTORY_SEPARATOR . 'tmp');
         }
         $this->cacheInterface = $cacheInterface;
     }
@@ -171,7 +176,7 @@ class AuthMiddleware
     public function isAuthRequired(RequestInterface $request)
     {
         $path = $request->getUri()->getPath();
-        
+
         if (array_key_exists($path, $this->authRequiredConfig)) {
             if (in_array($request->getMethod(), $this->authRequiredConfig[$path])) {
                 return true;
