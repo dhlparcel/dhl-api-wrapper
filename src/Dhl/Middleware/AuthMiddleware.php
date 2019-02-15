@@ -206,4 +206,6 @@ class AuthMiddleware
 
         return new Token($jsonBody['accessToken']);
     }
+
+
 }
