@@ -133,15 +133,8 @@ class AuthMiddleware
                 $message = 'Auth credentials are not set correctly. Both user and key must be set';
                 return new RejectedPromise(new RequestException($message, $request));
             }
-
-            $token = new Token($accessTokenCache);
-            if (!$token->isValid()) {
-                try {
-                    $token = $this->refreshtoken($refreshTokenCache);
-                } catch (GuzzleException $exception) {
-                    $token = $this->authenticate($user, $key);
-                }
-            }
+            
+            $token = $this->authenticate($user, $key);
 
             return $handler($request->withHeader('Authorization', sprintf('Bearer %s', $token->getToken())), $options);
         };
