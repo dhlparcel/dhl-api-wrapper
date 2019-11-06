@@ -1,4 +1,7 @@
-# dhl-api-wrapper
+# Dhl-api-wrapper (Deprecated, please read our warning) 
+
+### WARNING ###
+Provided as-is, but deprecated and no longer supported. 
 
 ### Installing via Composer
 The recommended way to install the wrapper is through
@@ -80,9 +83,5 @@ printf('<pre>%s</pre>', print_r($result, true));
 Endpoints which are available, take a look in the [./src/Dhl/resources](src/Dhl/resources) directory for reference.
 
 ### Bugs & Issues
-If you spot any bugs, please report it using the issue tracker.
-If you would like to contribute to the project please feel free to make your amends and submit a pull request.
-
-### Contact
-If you think something is not working correct or as it should, then contact us by emailing [plugins@dhl.com](mailto:plugins@dhl.com).
+We no longer maintain this wrapper. 
 
